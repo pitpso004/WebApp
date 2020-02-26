@@ -13,11 +13,13 @@
                 return false;
             }
         }
+
     </script>
 </head>
 
 <body>
-    <form action="main.php" method="GET" id="login">
+
+    <form action="main.php" method="GET" id="login_1">
         <center> Log in <br>
             <?php
 
@@ -48,18 +50,16 @@
                     }
                 }
                 if($status == TRUE){
-                    header("Location:login.php");
                     echo "<font color='red'> The Username or Password Is Incorrect. Try Again. </font>" ;
                 }
             ?><br>
 
             Uesrname: <input type="text" id="username" name="username"> <br>
             Password: <input type="password" id="password" name="password"> <br>
-            <input type="submit" value="Log in" onclick="return CheckEmpty() ">
+            <input type="submit" value="Log in" onclick="return CheckEmpty()">
         </center>
 
     </form>
 
 </body>
-
 </html>

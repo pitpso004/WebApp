@@ -1,6 +1,29 @@
 <?php
-$name = $_REQUEST['name'];
+require('conn.php');
+
+$name = "" ;
+$username = "" ;
+$password = "" ;
+
+if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
+if(isset($_GET['password'])){ $password = $_REQUEST['password']; }
+
+$sql = "SELECT User_username, User_password, User_name FROM register ";
+$result = mysqli_query($conn, $sql);
+
+if((mysqli_num_rows($result) > 0 ) and ($username != "" and $password != "")) { 
+    // ค้นหาข้อมูลจากในตาราง 
+    while($row = mysqli_fetch_assoc($result)){
+        if($row['User_username'] == $username and $row['User_password'] == $password){
+            $name = $row['User_name'];
+            mysqli_close($conn);
+        break;
+        }
+    }
+}
+
 ?>
+
 <html>
     <head>
         <title>Camera Man</title>
