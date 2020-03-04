@@ -27,7 +27,6 @@
 <body>
     <form action="" method="GET" id="register">
         <center> Register <br>
-
             <?php
                         require('conn.php');
 
@@ -35,7 +34,7 @@
                         $password = "" ;
                         $name =  "" ;
                         $email = "" ;
-                        $status = NULL ;
+                        $status = "" ;
 
                         if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
                         if(isset($_GET['password'])){ $password = $_REQUEST['password']; }

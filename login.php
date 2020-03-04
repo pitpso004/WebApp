@@ -19,16 +19,15 @@
 
 <body>
 
-    <form action="main.php" method="GET" id="login_1">
+    <form action="" method="GET" id="login">
         <center> Log in <br>
             <?php
-
+                session_start();
                 require('conn.php');
 
                 $username = "" ;
                 $password = "" ;
-                $name = "" ;
-                $status = NULL ;
+                $status = "" ;
 
                 if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
                 if(isset($_GET['password'])){ $password = $_REQUEST['password']; }
@@ -41,8 +40,9 @@
                     while($row = mysqli_fetch_assoc($result)){
                         if($row['User_username'] == $username and $row['User_password'] == $password){
                             $status = FALSE ;
-                            $name = $row['User_name'];
+                            $_SESSION['name'] = $row['User_name'];
                             mysqli_close($conn);
+                            header("Location:main.php");
                             
                         break;
                         }

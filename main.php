@@ -1,32 +1,16 @@
 <?php
-require('conn.php');
-
-$name = "" ;
-$username = "" ;
-$password = "" ;
-
-if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
-if(isset($_GET['password'])){ $password = $_REQUEST['password']; }
-
-$sql = "SELECT User_username, User_password, User_name FROM register ";
-$result = mysqli_query($conn, $sql);
-
-if((mysqli_num_rows($result) > 0 ) and ($username != "" and $password != "")) { 
-    // ค้นหาข้อมูลจากในตาราง 
-    while($row = mysqli_fetch_assoc($result)){
-        if($row['User_username'] == $username and $row['User_password'] == $password){
-            $name = $row['User_name'];
-            mysqli_close($conn);
-        break;
-        }
-    }
-}
-
+session_start();
 ?>
 
 <html>
     <head>
         <title>Camera Man</title>
+        <script>
+            function videoLive(){
+                window.open("live.php");
+                window.close("main.php");
+            }
+        </script>
     </head>
     <body>
         <form action="" method="GET" id="main">
@@ -34,12 +18,13 @@ if((mysqli_num_rows($result) > 0 ) and ($username != "" and $password != "")) {
             <table border="1">
                 <tr>
                     <td>
-                        <h3><?php echo $name ;?></h3>
+                        <h2><?php echo $_SESSION['name'] ;?></h2> 
+                        <a href="login.php">Log out</a>
                     </td>
-                    <td></td>
+                    <td><div id="img"></div></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Live"></td>
+                    <td><input type="submit" value="Live" onclick="videoLive()"></td>
                     <td><input type="submit" value="คลังวิดิโอ"></td>
                 </tr>
                 <tr>
