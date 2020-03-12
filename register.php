@@ -70,7 +70,8 @@
             Password: <input type="text" name="password" id="password"> <br>
             Name: <input type="text" name="name" id="name"> <br>
             E-mail: <input type="text" name="email" id="email"> <br>
-            <input type="submit" value="Submit" onclick="return CheckEmpty()"> <input type="reset" value="Clear">
+            <input type="submit" value="Submit" onclick="return CheckEmpty()">
+            <a href="login.php">Login</a>
         </center>
 
     </form>
