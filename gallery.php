@@ -1,13 +1,13 @@
 <?php
 session_start();
-if(!isset($_SESSION['state'])){
+if($_SESSION['state'] != '1'){
     header("Location:login.php");
 }
 ?>
 
 <head>
 
-    <title>Gallery Picture</title>
+    <title>Selfie Man</title>
     <script>
         function back(){
 				window.close("gallery.php");
@@ -20,8 +20,9 @@ if(!isset($_SESSION['state'])){
 <body>
 
     <div>
+        <h2>Gallery Picture</h2>
         <?php
-            $dirname = "images/"; // "images/" , "C:/Users/ASUS TUF/Downloads/"
+            $dirname = "images/" ; // "images/" , "C:/Users/ASUS TUF/Downloads/"
             $images = glob($dirname."*.jpg");
             
             foreach($images as $image) {

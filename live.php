@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['state'])){
+if($_SESSION['state'] != '1'){
     header("Location:login.php");
 }
 ?>
@@ -8,7 +8,7 @@ if(!isset($_SESSION['state'])){
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Webcam</title>
+	<title>Selfie Man</title>
 	<style>
 		body {
 			font-family: Helvetica, sans-serif;
@@ -60,6 +60,7 @@ if(!isset($_SESSION['state'])){
 
 		<!-- A button for taking snaps -->
 		<form>
+			
 			<input type="button" value="Take Snapshot" onclick="take_snapshot()">
 			<input type="button" value="Back" onclick="back()">
 

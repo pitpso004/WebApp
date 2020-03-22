@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <form action="" method="GET" id="register">
+    <form action="" method="POST" id="register">
         <center> Register <br>
             <?php
                         require('conn.php');
@@ -36,15 +36,15 @@
                         $email = "" ;
                         $status = "" ;
 
-                        if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
-                        if(isset($_GET['password'])){ $password = $_REQUEST['password']; }
-                        if(isset($_GET['name'])){ $name = $_REQUEST['name']; }
-                        if(isset($_GET['email'])){ $email = $_REQUEST['email']; }
+                        if(isset($_POST['username'])){ $username = $_REQUEST['username']; }
+                        if(isset($_POST['password'])){ $password = $_REQUEST['password']; }
+                        if(isset($_POST['name'])){ $name = $_REQUEST['name']; }
+                        if(isset($_POST['email'])){ $email = $_REQUEST['email']; }
 
                         $sql = "SELECT User_username, User_email FROM register ";
                         $result = mysqli_query($conn, $sql);
 
-                        if((mysqli_num_rows($result) > 0 ) and ($username != "" and $password != "" and $name != "" and $email != "")) { 
+                        if((mysqli_num_rows($result) > 0) and $username != "" and $password != "" and $name != "" and $email != ""   ) { 
                             // ค้นหาข้อมูลจากในตาราง 
                             while($row = mysqli_fetch_assoc($result)){
                                 if($row["User_username"] == $username or $row["User_email"] == $email){
@@ -56,7 +56,7 @@
                             }
                         }
                         if($status == TRUE){
-                            $sql = "INSERT INTO register (User_username, User_password, User_name, User_email) VALUES ('$username', '$password', '$name' ,'$email')";
+                            $sql = "INSERT INTO register (User_username, User_password, User_name, User_email, User_state) VALUES ('$username', '$password', '$name', '$email','0')";
                             $result = mysqli_query($conn, $sql);
                             echo "<font color='green'> Registration Completed Successfully. </font>";
                         }

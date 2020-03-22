@@ -63,7 +63,7 @@
             }
             ?><br>
 
-            Uesrname: <input type="text" id="username" name="username"> <br>
+            Username: <input type="text" id="username" name="username"> <br>
             Password: <input type="password" id="password" name="password"> <br>
             <input type="submit" value="Log in" onclick="return CheckEmpty()">
             <a href="register.php">Register</a>

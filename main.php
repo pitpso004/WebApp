@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['state'])){
+if($_SESSION['state'] != "1"){
     header("Location:login.php");
 }else{
     // require('notify.php');
@@ -10,7 +10,7 @@ if(!isset($_SESSION['state'])){
 <html>
 
 <head>
-    <title>Camera Man</title>
+    <title>Selfie Man</title>
     <script>
         function videoLive() {
             window.open("live.php");
@@ -24,8 +24,8 @@ if(!isset($_SESSION['state'])){
 
 <body>
     <center>
-        <h2>Camera Man</h2>
-        <table border="1">
+        <h2>Selfie Man</h2>
+        <table border="1" id='table'>
             <tr>
                 <td>
                     <h3>Hi.</h3>
@@ -41,13 +41,10 @@ if(!isset($_SESSION['state'])){
                 </td>
             </tr>
             <tr>
-                <td><input type="submit" value="Live" onclick="videoLive()"></td>
-                <td><input type="submit" value="คลังวิดิโอ" onclick="galleryPicture()"></td>
+                <td><input type="submit" value="เปิดกล้อง" onclick="videoLive()"></td>
+                <td><input type="submit" value="คลังรูปภาพ" onclick="galleryPicture()"></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="การแจ้งเตือน"></td>
-                <td><input type="submit" value="สมาชิก"></td>
-            </tr>
+
         </table>
     </center>
 </body>
