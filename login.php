@@ -15,11 +15,17 @@
         }
 
     </script>
+    <style>
+        body{
+            background-color:#94D3DB;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form action="" method="GET" id="login">
+    <form action="" method="POST" id="login">
         <center> Log in <br>
             <?php
                 session_start();
@@ -29,13 +35,13 @@
                 $password = "" ;
                 $state = "";
 
-                if(isset($_GET['username'])){ $username = $_REQUEST['username']; }
-                if(isset($_GET['password'])){ $password = $_REQUEST['password']; }
+                if(isset($_REQUEST['username'])){ $username = $_REQUEST['username']; }
+                if(isset($_REQUEST['password'])){ $password = $_REQUEST['password']; }
 
                 $sql = "SELECT User_username, User_password, User_state, User_name FROM register";
                 $result = mysqli_query($conn, $sql);
 
-                if((mysqli_num_rows($result) > 0 ) and ($username != "" and $password != "")) { 
+                if($username != "" and $password != "") { 
                     // ค้นหาข้อมูลจากในตาราง 
                     while($row = mysqli_fetch_assoc($result)){
                         if($row['User_username'] == $username and $row['User_password'] == $password){
@@ -49,7 +55,7 @@
                                 header("Location:main.php");
                                 
                                 break;
-                            }else if($row['User_state'] == '1'){
+                            }elseif($row['User_state'] == '1'){
                                 $state = "0";
                                 echo "<font color='red'> This Username is Logining In Use. </font>" ;
                                 mysqli_close($conn);

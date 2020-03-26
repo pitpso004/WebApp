@@ -20,6 +20,12 @@ if($_SESSION['state'] != "1"){
             window.open("gallery.php");
         }
     </script>
+    <style>
+        body{
+            background-color:#94D3DB;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 
 <body>

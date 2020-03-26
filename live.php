@@ -12,6 +12,8 @@ if($_SESSION['state'] != '1'){
 	<style>
 		body {
 			font-family: Helvetica, sans-serif;
+			background-color:#94D3DB;
+            background-size: 100% 100%;
 		}
 
 		h2,
@@ -44,10 +46,10 @@ if($_SESSION['state'] != '1'){
 
 		<div id="my_camera"></div>
 
-		<!-- Webcam.js JavaScript Library -->
+		<!-- เรียกใช้งาน Webcam.js JavaScript Library -->
 		<script src="webcam.min.js"></script>
 
-		<!-- camera -->
+		<!-- กล้อง -->
 		<script>
 			Webcam.set({
 				width: 320,
@@ -58,7 +60,7 @@ if($_SESSION['state'] != '1'){
 			Webcam.attach('#my_camera');
 		</script>
 
-		<!-- A button for taking snaps -->
+		<!-- ปุ่มบันทึกภาพ -->
 		<form>
 			
 			<input type="button" value="Take Snapshot" onclick="take_snapshot()">
@@ -87,10 +89,10 @@ if($_SESSION['state'] != '1'){
 		}
 
 		function take_snapshot() {
-			// take snapshot and get image data
+			// บันทึกภาพจากกล้อง
 			Webcam.snap(function (data_uri) {
 				var time = myFunction();
-				// display results in page
+				// แสดงไฟล์รูปที่บันทึกได้ออกมา
 				var name = "<?php echo $_SESSION['name']; ?>";
 				document.getElementById('capture').innerHTML =
 					"<a href='" + data_uri + "' download='" + name + time + "'> <img src='" + data_uri + "'> </a>" +

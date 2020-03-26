@@ -14,6 +14,12 @@ if($_SESSION['state'] != '1'){
 			}
 
     </script>
+    <style>
+        body{
+            background-color:#94D3DB;
+            background-size: 100% 100%;
+        }
+    </style>
 
 </head>
 
@@ -23,7 +29,7 @@ if($_SESSION['state'] != '1'){
         <h2>Gallery Picture</h2>
         <?php
             $dirname = "images/" ; // "images/" , "C:/Users/ASUS TUF/Downloads/"
-            $images = glob($dirname."*.jpg");
+            $images = glob($dirname."*.jfif");
             
             foreach($images as $image) {
                 echo '<img src="'.$image.'" height="150" width="210" alt="'.$image.'"> </&nbsp>' ;

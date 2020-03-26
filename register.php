@@ -21,7 +21,12 @@
             }
         }
     </script>
-
+    <style>
+        body{
+            background-color:#94D3DB;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,7 +49,7 @@
                         $sql = "SELECT User_username, User_email FROM register ";
                         $result = mysqli_query($conn, $sql);
 
-                        if((mysqli_num_rows($result) > 0) and $username != "" and $password != "" and $name != "" and $email != ""   ) { 
+                        if($username != "" and $password != "" and $name != "" and $email != ""   ) { 
                             // ค้นหาข้อมูลจากในตาราง 
                             while($row = mysqli_fetch_assoc($result)){
                                 if($row["User_username"] == $username or $row["User_email"] == $email){
