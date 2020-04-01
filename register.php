@@ -63,6 +63,7 @@
                         if($status == TRUE){
                             $sql = "INSERT INTO register (User_username, User_password, User_name, User_email, User_state) VALUES ('$username', '$password', '$name', '$email','0')";
                             $result = mysqli_query($conn, $sql);
+                            mkdir("$username");
                             echo "<font color='green'> Registration Completed Successfully. </font>";
                         }
                         mysqli_close($conn);

@@ -80,11 +80,7 @@ if($_SESSION['state'] != '1'){
 		}
 
 		function myFunction() {
-			var d = new Date();
-			var h = addZero(d.getHours());
-			var m = addZero(d.getMinutes());
-			var s = addZero(d.getSeconds());
-			var time = "_" + h + ":" + m + ":" + s;
+			var time = new Date();
 			return time;
 		}
 
